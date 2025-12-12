@@ -1,0 +1,510 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2024/12/24/%E5%88%9D%E5%AD%A6dp%E2%80%94%E2%80%9401%E8%83%8C%E5%8C%85/">
+
+
+
+  <title>
+初学dp——01背包 |
+WFN 's Blog = Hexo</title>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">初学dp——01背包
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-12-24 02:57:47">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-12-24T02:57:47+00:00">2024-12-24</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">WFN 's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/lLhC76jMxOTSIVu.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2024/10/27/2bv7lsSFjImezQ5.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/jAHZ1EnJPiNOeor.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/mdhvurEoOSMX7c8.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/qRctGAbrBwj2zS6.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2024/12/01/8eG2bmIMctZNE6L.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/24/%E5%88%9D%E5%AD%A6dp%E2%80%94%E2%80%9401%E8%83%8C%E5%8C%85/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="GoodNut">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="初学dp之01背包"><a href="#初学dp之01背包" class="headerlink" title="初学dp之01背包"></a>初学dp之01背包</h1><p>刚开始学算法的时候，就经常听到大犇们讨论什么dpdp的，叫什么动态规划，然后感觉这东西很深奥</p>
+<p>于是对它就产生了某种畏惧心理</p>
+<p>等到学的时候也没弄懂，没想到现在要在这个破嵙重新捡起来</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>大致就是递归的思路，把大问题分解成小问题，就这样</p>
+<h2 id="贴个模版题先😋"><a href="#贴个模版题先😋" class="headerlink" title="贴个模版题先😋"></a>贴个模版题先😋</h2><p><strong>7-3 小Z卸货</strong></p>
+<p>作者 zyc</p>
+<p>单位 山东科技大学</p>
+<p>小Z卸货<br>小Z是一个卸货工人，他每天都会去码头卸货，每件货物都有其价值v<del>i</del>和其卸货的时间t<del>i</del>，问他在T的时间内卸下来的所有的货物的总价值最大是多少</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>第1行有2个整数T（1≤T≤1000）和 M（1≤M≤100），用一个空格隔开，T代表总共能够用来卸货的时间，M代表码头上货物的数目。<br>接下来的M行每行包括两个正整数t(1≤t≤100) v(1≤v≤100)，用空格分隔</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>输出在规定的时间内卸下的货物的最大总价值。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><p>在这里给出一组输入。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">32 3</span><br><span class="line">30 100</span><br><span class="line">29 1</span><br><span class="line">2 2</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><p>在这里给出相应的输出。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">102</span><br></pre></td></tr></table></figure>
+
+<p>不管是什么采药采果子卸货啥的，这类问题一般可以枚举出所有情况（可以暴力）</p>
+<p>就是做出取舍，有一定价值的同时也会造成一定负面影响</p>
+<p>为什么叫01背包呢，就是因为对于一个物品，我们只有拿或者不拿两种情况，即0与1</p>
+<h2 id="试图理解"><a href="#试图理解" class="headerlink" title="试图理解"></a>试图理解</h2><p>引入一个二维数组m[ ][ ]</p>
+<p><del>再引入别人的一个博客</del></p>
+<p>w为质量即上文提到的“负面影响”，他会占用容量；v为价值</p>
+<p>面对每个物品，我们只有选择拿取或者不拿两种选择，不能选择装入某物品的一部分，也不能装入同一物品多次。<br>解决办法：声明一个 大小为 m[n][c] 的二维数组，m[ i ][ j ] 表示 在面对第 i 件物品，且背包容量为 j 时所能获得的最大价值 ，那么我们可以很容易分析得出 m[i][j] 的计算方法，<br>（1）. j &lt; w[i] 的情况，这时候背包容量不足以放下第 i 件物品，只能选择不拿<br>m[ i ][ j ] &#x3D; m[ i-1 ][ j ]<br>（2）. j&gt;&#x3D;w[i] 的情况，这时背包容量可以放下第 i 件物品，我们就要考虑拿这件物品是否能获取更大的价值。<br>如果拿取，m[ i ][ j ]&#x3D;m[ i-1 ][ j-w[ i ] ] + v[ i ]。 这里的m[ i-1 ][ j-w[ i ] ]指的就是考虑了i-1件物品，背包容量为j-w[i]时的最大价值，也是相当于为第i件物品腾出了w[i]的空间。<br>如果不拿，m[ i ][ j ] &#x3D; m[ i-1 ][ j ] , 同（1）<br>究竟是拿还是不拿，自然是比较这两种情况那种价值最大。<br>————————————————</p>
+<pre><code>                版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+</code></pre>
+<p>原文链接：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzY3NzY0MTM0L2FydGljbGUvZGV0YWlscy8xMjk5MDMyNjM=">https://blog.csdn.net/qq_67764134/article/details/129903263</span></p>
+<p>就是如果容量够放这个物品的话，那就去找不放这个物品（i-1）并且容量刚好够够这个物品（j-w[i]）的最优解</p>
+<p>即m[ i ][ j ]&#x3D;m[ i-1 ][ j-w[ i ] ] + v[ i ]</p>
+<p>然后让他和不放他的情况比较，取较大者</p>
+<p><code>m[i][j]=max(m[i-1][j],m[i-1][j-w[i]]+v[i]);</code></p>
+<h3 id="小z卸货题解"><a href="#小z卸货题解" class="headerlink" title="小z卸货题解"></a>小z卸货题解</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> n,V;</span><br><span class="line">	cin&gt;&gt;V&gt;&gt;n;</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> w[<span class="number">10000</span>],t[<span class="number">10000</span>],f[<span class="number">1001</span>][<span class="number">1001</span>];</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;t[i]&gt;&gt;w[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=V;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(t[i]&gt;j) f[i][j]=f[i<span class="number">-1</span>][j];</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			  f[i][j]=<span class="built_in">max</span>(f[i<span class="number">-1</span>][j],f[i<span class="number">-1</span>][j-t[i]]+w[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	cout&lt;&lt;f[n][V];</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-12-24 03:27:23" itemprop="dateModified" datetime="2024-12-24T03:27:23+00:00">2024-12-24</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="GoodNut WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="GoodNut Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="GoodNut PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>GoodNut <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2024/12/24/%E5%88%9D%E5%AD%A6dp%E2%80%94%E2%80%9401%E8%83%8C%E5%8C%85/" title="初学dp——01背包">http://example.com/2024/12/24/初学dp——01背包/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/12/24/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2024&#x2F;10&#x2F;27&#x2F;2bv7lsSFjImezQ5.jpg" title="前缀和与二分查找">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>前缀和与二分查找</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/12/24/test/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2025&#x2F;08&#x2F;20&#x2F;Jo1KGWvAVkrwBix.jpg" title="666寄喽">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>666寄喽</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E5%AD%A6dp%E4%B9%8B01%E8%83%8C%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">初学dp之01背包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%B4%E4%B8%AA%E6%A8%A1%E7%89%88%E9%A2%98%E5%85%88%F0%9F%98%8B"><span class="toc-number">1.2.</span> <span class="toc-text">贴个模版题先😋</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">输入格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.2.</span> <span class="toc-text">输出格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.2.3.</span> <span class="toc-text">输入样例:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.2.4.</span> <span class="toc-text">输出样例:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%95%E5%9B%BE%E7%90%86%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">试图理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8Fz%E5%8D%B8%E8%B4%A7%E9%A2%98%E8%A7%A3"><span class="toc-number">1.3.1.</span> <span class="toc-text">小z卸货题解</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="GoodNut"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">GoodNut</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">25</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">4</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/12/24/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/12/24/test/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/24/%E8%87%AA%E5%AE%9A%E4%B9%89sort%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" title="自定义sort排序规则">自定义sort排序规则</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/04/14/2025%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%88%91%E6%98%AF%E5%82%BB%E9%80%BC/" title="2025蓝桥杯之我是傻逼">2025蓝桥杯之我是傻逼</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/08/20/%E6%9B%B4%E6%96%B0%E6%B5%8B%E8%AF%95/" title="更新测试">更新测试</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/c/" title="In c++">c++</a>
+</div>
+
+    <span><a href="/2024/11/14/c++%E6%9D%82%E8%AE%B0%20%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9C%89%E8%B6%A3%E7%9A%84%E5%87%BD%E6%95%B0/" title="c++杂记 —字符串和有趣的函数">c++杂记 —字符串和有趣的函数</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/28/%E5%A4%9A%E6%AC%A1%E8%AF%A2%E9%97%AE%E9%A2%98%E7%9B%AE%E6%A8%A1%E7%89%88/" title="多次询问题目模版">多次询问题目模版</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ctf/" title="In ctf">ctf</a>
+</div>
+
+    <span><a href="/2025/08/20/2025Lilctf%E5%A4%8D%E7%8E%B0/" title="2025Lilctf复现">2025Lilctf复现</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/01/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95/" title="并查集">并查集</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/24/test/" title="666寄喽">666寄喽</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web/" title="In web">web</a>
+</div>
+
+    <span><a href="/2025/04/01/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/" title="php伪协议">php伪协议</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" title="归并排序">归并排序</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">GoodNut @ WFN 's Blog</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/12/24/初学dp——01背包/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

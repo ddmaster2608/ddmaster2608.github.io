@@ -1,0 +1,553 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2025/03/10/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+
+
+
+  <title>
+树状数组 |
+WFN 's Blog = Hexo</title>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">树状数组
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2025-03-10 14:33:34">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-03-10T14:33:34+00:00">2025-03-10</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">WFN 's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/Jo1KGWvAVkrwBix.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/yjrKMZYb6QRiJd1.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/OPmx8GsjJQ3ywoV.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/iKlGO1SNV2Xe8AP.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/lLhC76jMxOTSIVu.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/KnsU1wb9RcydQxg.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/10/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="GoodNut">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h1><h2 id="前置知识-lowbit-）"><a href="#前置知识-lowbit-）" class="headerlink" title="前置知识-lowbit(）"></a>前置知识-lowbit(）</h2><p>非负整数n在二进制表示下最低位1及其后面的的0构成的数值</p>
+<p>eg. lowbit(44) &#x3D; lowbit((101100))&#x3D;(100)&#x3D; 4  (4的二进制表示是100）</p>
+<p>为了求这个数值我们可以先取反</p>
+<p>101100 &#x3D;&gt; 010011  然后再加1</p>
+<p>010011 &#x3D;&gt; 010100 这时我们发现 除了最低位的1和后面的0 其余位上的数字均与原数(101100)不同  所以让两数按位与 就能得到最后的结果</p>
+<p>因为计算机使用的是补码 所以对一个数取反加一就是负的这个数（详见wiki）</p>
+<p>lowbit（n）&#x3D;n&amp;（~n+1）&#x3D;n&amp;-n</p>
+<h2 id="正题-树状数组原理"><a href="#正题-树状数组原理" class="headerlink" title="正题-树状数组原理"></a>正题-树状数组原理</h2><p>首先我们建立下图所示的森林结构，每个节点t[x]保存以x为子树中叶节点值的和</p>
+<p>同时我们也发现，t[x]覆盖的长度就是lowbit（x），继续观察我们还会发现t[x]的父节点就是t[x+lowbit(x)]</p>
+<p>而且整个树的深度为log₂n+1</p>
+<p><img data-src="https://s2.loli.net/2025/03/11/Iha8HMt1ow7OLcD.png"></p>
+<p>由此，我们能很容易得到对应操作的代码:</p>
+<h3 id="add-x-k-操作（t-x-k）-单点修改"><a href="#add-x-k-操作（t-x-k）-单点修改" class="headerlink" title="add(x,k)操作（t[x]+k）-单点修改"></a>add(x,k)操作（t[x]+k）-单点修改</h3><p>在整棵树上维护这个值，需要一层一层向上找到父节点，并按照需要依次+k</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">for</span>(;x&lt;=n;x+=x&amp;-x) t[x]+=k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="add-x-操作-（查询t-x-的前缀和）-区间查询"><a href="#add-x-操作-（查询t-x-的前缀和）-区间查询" class="headerlink" title="add(x)操作 （查询t[x]的前缀和）-区间查询"></a>add(x)操作 （查询t[x]的前缀和）-区间查询</h3><p>计算这个值的时候，我们只需要依次累加其左上节点的和即可</p>
+<p>我们发现这个所谓“左上”节点正是t[x-lowbit(x)]</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">ask</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(;x;x-=x&amp;-x) ans+=t[x]</span><br><span class="line">   <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面贴一个例题</p>
+<h3 id="add-x-y-k-操作-区间修改"><a href="#add-x-y-k-操作-区间修改" class="headerlink" title="add(x,y,k)操作- 区间修改"></a>add(x,y,k)操作- 区间修改</h3><p>对于区间修改我们要引入一个新的概念——差分数组</p>
+<p>假如原数组为 3 1 2 4 2 1 3</p>
+<p>那他的差分数组就是3 -2 1 2 -2 -1 2</p>
+<p>就是原数减去它前面的数，特别的第一个数减去0即可</p>
+<p>差分数组有一个性质是差分数组的前缀和就是原数组</p>
+<p>同理，前缀和数组的差分数组就是原数组</p>
+<p>言归正传，如果要进行区间修改操作，我们不能对原数组指定范围内依次修改，因为太繁琐了，所以我们可以维护一个差分数组b，如果在（r,l）范围内进行加k操作，对于数组b，我们只需要b[r]+k,b[l+1]-k 即可。因为r到l范围内都加了k的话，除了两端的差有改变，其他差是不会改变的—— (a+c)-(b+c)&#x3D;a-b</p>
+<p>这样，我们就巧妙地完成了将区间修改转变为单点修改的转化，然后就同理add(x,k)操作喽</p>
+<h4 id="在此条件下还会引申出单点查询的操作"><a href="#在此条件下还会引申出单点查询的操作" class="headerlink" title="在此条件下还会引申出单点查询的操作"></a>在此条件下还会引申出单点查询的操作</h4><p>对于差分数组b我们想要得到原数组的某一个值，我们求其前缀和即可，（前面的性质提到了）同理add(x)操作</p>
+<h2 id="P3374-树状数组1"><a href="#P3374-树状数组1" class="headerlink" title="P3374 树状数组1"></a>P3374 树状数组1</h2><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>如题，已知一个数列，你需要进行下面两种操作：</p>
+<ul>
+<li>将某一个数加上 <strong>x</strong></li>
+<li>求出某区间每一个数的和</li>
+</ul>
+<h2 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含两个正整数 <strong>n</strong>,<strong>m</strong>，分别表示该数列数字的个数和操作的总个数。</p>
+<p>第二行包含 <strong>n</strong> 个用空格分隔的整数，其中第 <strong>i</strong> 个数字表示数列第 <strong>i</strong> 项的初始值。</p>
+<p>接下来 <strong>m</strong> 行每行包含 <strong>3</strong> 个整数，表示一个操作，具体如下：</p>
+<ul>
+<li><code>1 x k</code> 含义：将第 <strong>x</strong> 个数加上 <strong>k</strong></li>
+<li><code>2 x y</code> 含义：输出区间 <strong>[<strong>x</strong>,<strong>y</strong>]</strong> 内每个数的和</li>
+</ul>
+<h2 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出包含若干行整数，即为所有操作 <strong>2</strong> 的结果。</p>
+<h2 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p><strong>输入 #1</strong>复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">5 5</span><br><span class="line">1 5 4 2 3</span><br><span class="line">1 1 3</span><br><span class="line">2 2 5</span><br><span class="line">1 3 -1</span><br><span class="line">1 4 2</span><br><span class="line">2 1 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出 #1</strong>复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">14</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
+
+<h2 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明&#x2F;提示"></a>说明&#x2F;提示</h2><p>【数据范围】</p>
+<p>对于 <strong>30%</strong> 的数据，<strong>1</strong>≤<strong>n</strong>≤<strong>8</strong>，<strong>1</strong>≤<strong>m</strong>≤<strong>10</strong>；<br>对于 <strong>70%</strong> 的数据，<strong>1</strong>≤<strong>n</strong>,<strong>m</strong>≤<strong>1</strong>0<strong>4</strong>；<br>对于 <strong>100%</strong> 的数据，<strong>1</strong>≤<strong>n</strong>,<strong>m</strong>≤<strong>5</strong>×<strong>1</strong>0<strong>5</strong>。</p>
+<p>数据保证对于任意时刻，<strong>a</strong> 的任意子区间（包括长度为 <strong>1</strong> 和 <strong>n</strong> 的子区间）和均在 <strong>[<strong>−</strong>2</strong>31**,<strong>2</strong>31**) 范围内。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="type">int</span> n,m,t[<span class="number">2000010</span>];</span><br><span class="line"> <span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;x&lt;=n;x+=x&amp;-x) t[x]+=k;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(;x;x-=x&amp;-x) ans+=t[x];</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="type">int</span> a;</span><br><span class="line">         cin&gt;&gt;a;</span><br><span class="line">         <span class="built_in">add</span>(i,a);</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="type">int</span> a,b,c;</span><br><span class="line">         cin&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">         <span class="keyword">if</span>(a==<span class="number">1</span>)</span><br><span class="line">             <span class="built_in">add</span>(b,c);</span><br><span class="line">         <span class="keyword">if</span>(a==<span class="number">2</span>)</span><br><span class="line">             cout&lt;&lt;<span class="built_in">sum</span>(c)-<span class="built_in">sum</span>(b<span class="number">-1</span>)&lt;&lt;endl;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="P3368-树状数组2"><a href="#P3368-树状数组2" class="headerlink" title="P3368 树状数组2"></a>P3368 树状数组2</h2><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>如题，已知一个数列，你需要进行下面两种操作：</p>
+<ol>
+<li>将某区间每一个数加上 <strong>x</strong>；</li>
+<li>求出某一个数的值。</li>
+</ol>
+<h2 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h2><p>第一行包含两个整数 <strong>N</strong>、<strong>M</strong>，分别表示该数列数字的个数和操作的总个数。</p>
+<p>第二行包含 <strong>N</strong> 个用空格分隔的整数，其中第 <strong>i</strong> 个数字表示数列第 <strong>i</strong> 项的初始值。</p>
+<p>接下来 <strong>M</strong> 行每行包含 <strong>2</strong> 或 <strong>4</strong>个整数，表示一个操作，具体如下：</p>
+<p>操作 <strong>1</strong>： 格式：<code>1 x y k</code> 含义：将区间 <strong>[<strong>x</strong>,<strong>y</strong>]</strong> 内每个数加上 <strong>k</strong>；</p>
+<p>操作 <strong>2</strong>： 格式：<code>2 x</code> 含义：输出第 <strong>x</strong> 个数的值。</p>
+<h2 id="输出格式-1"><a href="#输出格式-1" class="headerlink" title="输出格式"></a>输出格式</h2><p>输出包含若干行整数，即为所有操作 <strong>2</strong> 的结果。</p>
+<h2 id="输入输出样例-1"><a href="#输入输出样例-1" class="headerlink" title="输入输出样例"></a>输入输出样例</h2><p><strong>输入 #1</strong>复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">5 5</span><br><span class="line">1 5 4 2 3</span><br><span class="line">1 2 4 2</span><br><span class="line">2 3</span><br><span class="line">1 1 5 -1</span><br><span class="line">1 3 5 7</span><br><span class="line">2 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出 #1</strong>复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">10</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"> <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> <span class="type">int</span> n,m,t[<span class="number">2000001</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"> <span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x,<span class="type">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(;x&lt;=n;x+=x&amp;-x) t[x]+=k;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum</span><span class="params">(<span class="type">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(;x;x-=x&amp;-x) ans+=t[x];</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>),cin.<span class="built_in">tie</span>(<span class="number">0</span>),cout.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">     cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">     <span class="type">int</span> q=<span class="number">0</span>;</span><br><span class="line">     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="type">int</span> a;</span><br><span class="line">         cin&gt;&gt;a;</span><br><span class="line">         <span class="built_in">add</span>(i,a-q);</span><br><span class="line">         q=a;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">     &#123;</span><br><span class="line">         <span class="type">int</span> a,b,c,d;</span><br><span class="line">         cin&gt;&gt;a;</span><br><span class="line">         <span class="keyword">if</span>(a==<span class="number">1</span>)</span><br><span class="line">         &#123;</span><br><span class="line">            cin&gt;&gt;b&gt;&gt;c&gt;&gt;d;</span><br><span class="line">            <span class="built_in">add</span>(b,d); </span><br><span class="line">            <span class="built_in">add</span>(c<span class="number">+1</span>,-d);</span><br><span class="line">         &#125;</span><br><span class="line">   </span><br><span class="line">         <span class="keyword">if</span>(a==<span class="number">2</span>)</span><br><span class="line">         &#123;</span><br><span class="line">             cin&gt;&gt;c;</span><br><span class="line">             cout&lt;&lt;<span class="built_in">sum</span>(c)&lt;&lt;<span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">         &#125;  </span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2025-03-14 02:54:08" itemprop="dateModified" datetime="2025-03-14T02:54:08+00:00">2025-03-14</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="GoodNut WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="GoodNut Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="GoodNut PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>GoodNut <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2025/03/10/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" title="树状数组">http://example.com/2025/03/10/树状数组/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/03/08/%E5%8D%9A%E5%AE%A2%E5%A4%8D%E6%B4%BB/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2025&#x2F;08&#x2F;20&#x2F;W1sOYClVoP4HUx6.jpg" title="博客复活">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>博客复活</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2025/03/28/web%EF%BC%881%EF%BC%89/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2025&#x2F;08&#x2F;20&#x2F;SM4Hod53mXf1NB8.jpg" title="web（1）">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> web</span>
+  <h3>web（1）</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">树状数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86-lowbit-%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">前置知识-lowbit(）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E9%A2%98-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">正题-树状数组原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#add-x-k-%E6%93%8D%E4%BD%9C%EF%BC%88t-x-k%EF%BC%89-%E5%8D%95%E7%82%B9%E4%BF%AE%E6%94%B9"><span class="toc-number">1.2.1.</span> <span class="toc-text">add(x,k)操作（t[x]+k）-单点修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-x-%E6%93%8D%E4%BD%9C-%EF%BC%88%E6%9F%A5%E8%AF%A2t-x-%E7%9A%84%E5%89%8D%E7%BC%80%E5%92%8C%EF%BC%89-%E5%8C%BA%E9%97%B4%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.2.2.</span> <span class="toc-text">add(x)操作 （查询t[x]的前缀和）-区间查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-x-y-k-%E6%93%8D%E4%BD%9C-%E5%8C%BA%E9%97%B4%E4%BF%AE%E6%94%B9"><span class="toc-number">1.2.3.</span> <span class="toc-text">add(x,y,k)操作- 区间修改</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8%E6%AD%A4%E6%9D%A1%E4%BB%B6%E4%B8%8B%E8%BF%98%E4%BC%9A%E5%BC%95%E7%94%B3%E5%87%BA%E5%8D%95%E7%82%B9%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">在此条件下还会引申出单点查询的操作</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P3374-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%841"><span class="toc-number">1.3.</span> <span class="toc-text">P3374 树状数组1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.4.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.5.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.6.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.7.</span> <span class="toc-text">输入输出样例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E-%E6%8F%90%E7%A4%BA"><span class="toc-number">1.8.</span> <span class="toc-text">说明&#x2F;提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P3368-%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%842"><span class="toc-number">1.9.</span> <span class="toc-text">P3368 树状数组2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="toc-number">1.10.</span> <span class="toc-text">题目描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">1.11.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F-1"><span class="toc-number">1.12.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B-1"><span class="toc-number">1.13.</span> <span class="toc-text">输入输出样例</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="GoodNut"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">GoodNut</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">25</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">4</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2025/03/08/%E5%8D%9A%E5%AE%A2%E5%A4%8D%E6%B4%BB/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2025/03/28/web%EF%BC%881%EF%BC%89/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web/" title="In web">web</a>
+</div>
+
+    <span><a href="/2025/04/01/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/" title="php伪协议">php伪协议</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/c/" title="In c++">c++</a>
+</div>
+
+    <span><a href="/2024/11/14/c++%E6%9D%82%E8%AE%B0%20%E2%80%94%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%9C%89%E8%B6%A3%E7%9A%84%E5%87%BD%E6%95%B0/" title="c++杂记 —字符串和有趣的函数">c++杂记 —字符串和有趣的函数</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2025/10/15/%E7%AC%AC%E4%B8%80%E9%81%93%E8%BF%B7%E5%AE%AB%E9%80%86%E5%90%91%E9%A2%98!/" title="第一道迷宫逆向题!">第一道迷宫逆向题!</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web/" title="In web">web</a>
+</div>
+
+    <span><a href="/2025/04/01/web%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" title="web之信息搜集">web之信息搜集</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" title="归并排序">归并排序</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/04/14/2025%E8%93%9D%E6%A1%A5%E6%9D%AF%E4%B9%8B%E6%88%91%E6%98%AF%E5%82%BB%E9%80%BC/" title="2025蓝桥杯之我是傻逼">2025蓝桥杯之我是傻逼</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/ctf/" title="In ctf">ctf</a>
+</div>
+
+    <span><a href="/2025/08/20/2025Lilctf%E5%A4%8D%E7%8E%B0/" title="2025Lilctf复现">2025Lilctf复现</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web/" title="In web">web</a>
+</div>
+
+    <span><a href="/2025/03/28/web%EF%BC%881%EF%BC%89/" title="web（1）">web（1）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/12/12/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/03/31/sqlmap%E4%BD%BF%E7%94%A8/" title="sqlmap使用">sqlmap使用</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">GoodNut @ WFN 's Blog</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/03/10/树状数组/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+
+<link rel="canonical" href="http://example.com/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
+
+
+
+  <title>
+归并排序 |
+WFN 's Blog = Hexo</title>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">归并排序
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2024-12-22 13:20:34">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-12-22T13:20:34+00:00">2024-12-22</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">WFN 's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/KnsU1wb9RcydQxg.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/41YfPCg3AVFUsEO.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/FnPYkErT2RAtBjp.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/lLhC76jMxOTSIVu.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2024/10/27/2bv7lsSFjImezQ5.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/HW2rR4BebQfanCG.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="GoodNut">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>归并排序是一种排序方式，分为两个步骤，归与并。归就是一直分组分到不能再分为止，并就是合并，（显而易见这是一个递归回溯的过程）</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>比如说有8个数</p>
+<p>开始阶段：10  6  7  1  3  9  4  2（对半砍）</p>
+<p>第一次分解：10  6  7  1        3  9  4  2（对半砍）</p>
+<p>第二次分解：10  6        7  1        3  9        4  2（对半砍）</p>
+<p>第三次分解：10  6        7  1        3  9        4  2</p>
+<p>合并阶段（排序）</p>
+<p>第一次：  6  10    1  7    3  9    2  4</p>
+<p>第二次：1  6  7  10        2  3  4  9</p>
+<p>第三次：1  2  3  4  6  7  9  10       完成~！😋</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>显然主体是个递归过程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">void merger_sort(long long a[],long long l,long long r)</span><br><span class="line">&#123;</span><br><span class="line">	if(l&gt;=r) return;//终止条件：分到不能再分</span><br><span class="line">	int mid=(l+r)/2;</span><br><span class="line">	merger_sort(a,l,mid);//砍砍砍！</span><br><span class="line">	merger_sort(a,mid+1,r);//砍砍砍！</span><br><span class="line">	int i=l,j=mid+1,k=0;</span><br><span class="line">	while(i&lt;=mid&amp;&amp;j&lt;=r)//合并的过程：可以理解成有i和j两堆牌，小的在上面</span><br><span class="line">                           //比较两牌顶的牌，谁小就把谁拿出来，放到已排序序列tem[]</span><br><span class="line">	&#123;</span><br><span class="line">		if(a[i]&lt;=a[j])//i牌顶的牌较小</span><br><span class="line">			tem[k++]=a[i++];//已排序序列指针后移，i牌顶指针下移（因为已经取了牌顶的一张牌，现在应该指向新的牌顶）</span><br><span class="line">		else </span><br><span class="line">			tem[k++]=a[j++];//（同上）</span><br><span class="line">	&#125;</span><br><span class="line">		while(i&lt;=mid) tem[k++]=a[i++];//检验是否还有剩下的数</span><br><span class="line">		while(j&lt;=r) tem[k++]=a[j++];//同上</span><br><span class="line">		for(int i=l,k=0;i&lt;=r;i++,k++)</span><br><span class="line">			a[i]=tem[k];//将排好序的数据复制到数组</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><p><strong>7-2 逆序对的数量</strong>分数 100</p>
+<p>全屏浏览</p>
+<p>切换布局</p>
+<p>作者 wzx</p>
+<p>单位 山东科技大学</p>
+<p>给定一个长度为 n 的整数数列，请你计算数列中的逆序对的数量。</p>
+<p>逆序对的定义如下：对于数列的第 i 个和第 j  个元素，如果满足 i&lt;j 且 a[i]&gt;a[j]，则其为一个逆序对；否则不是。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>第一行包含整数 n，表示数列的长度。<br>第二行包含 n 个整数，表示整个数列。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>输出一个整数，表示逆序对的个数。</p>
+<h3 id="数据范围"><a href="#数据范围" class="headerlink" title="数据范围"></a>数据范围</h3><p>1≤n≤100000，<br>数据不会超出int范围。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">2 3 4 5 6 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
+
+<p>代码实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits/stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">long long n,a[100001],tem[100001],ans=0;</span><br><span class="line">void merger_sort(long long a[],long long l,long long r)</span><br><span class="line">&#123;</span><br><span class="line">	if(l&gt;=r) return;</span><br><span class="line">	int mid=(l+r)/2;</span><br><span class="line">	merger_sort(a,l,mid);</span><br><span class="line">	merger_sort(a,mid+1,r);</span><br><span class="line">	int i=l,j=mid+1,k=0;</span><br><span class="line">	while(i&lt;=mid&amp;&amp;j&lt;=r)</span><br><span class="line">	&#123;</span><br><span class="line">		if(a[i]&lt;=a[j])</span><br><span class="line">		&#123;</span><br><span class="line">			tem[k++]=a[i++];</span><br><span class="line">		&#125;</span><br><span class="line">		else </span><br><span class="line">		&#123;</span><br><span class="line">			tem[k++]=a[j++];</span><br><span class="line">			ans+=(mid-i+1);//j的序号肯定在i后，此时a[i]还大于a[j]，而此时a[]已经排完了序，那序号i后的数都大于a[j],都构成逆序对</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		while(i&lt;=mid) tem[k++]=a[i++];</span><br><span class="line">		while(j&lt;=r) tem[k++]=a[j++];</span><br><span class="line">		for(int i=l,k=0;i&lt;=r;i++,k++)</span><br><span class="line">			a[i]=tem[k];</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	for(int i=0;i&lt;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		cin&gt;&gt;a[i];</span><br><span class="line">	&#125;</span><br><span class="line">	merger_sort(a,0,n-1);</span><br><span class="line">	cout&lt;&lt;ans;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2024-12-22 14:16:36" itemprop="dateModified" datetime="2024-12-22T14:16:36+00:00">2024-12-22</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="GoodNut WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="GoodNut Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="GoodNut PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>GoodNut <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" title="归并排序">http://example.com/2024/12/22/归并排序/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/12/01/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2025&#x2F;08&#x2F;20&#x2F;Jo1KGWvAVkrwBix.jpg" title="并查集">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>并查集</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/12/24/%E8%87%AA%E5%AE%9A%E4%B9%89sort%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2025&#x2F;08&#x2F;20&#x2F;nC2xSmbiQO8zIE1.jpg" title="自定义sort排序规则">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>自定义sort排序规则</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-number">1.</span> <span class="toc-text">归并排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.1.</span> <span class="toc-text">代码实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">输入格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.2.</span> <span class="toc-text">输出格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%8C%83%E5%9B%B4"><span class="toc-number">1.2.3.</span> <span class="toc-text">数据范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.2.4.</span> <span class="toc-text">输入样例:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.2.5.</span> <span class="toc-text">输出样例:</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="GoodNut"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">GoodNut</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">25</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">4</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/12/01/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/12/24/%E8%87%AA%E5%AE%9A%E4%B9%89sort%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/28/%E5%A4%9A%E6%AC%A1%E8%AF%A2%E9%97%AE%E9%A2%98%E7%9B%AE%E6%A8%A1%E7%89%88/" title="多次询问题目模版">多次询问题目模版</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/learn/" title="In learn">learn</a>
+</div>
+
+    <span><a href="/2024/10/26/git%E5%88%9D%E5%AD%A6%E8%AE%B0%E5%BD%95/" title="git初学记录">git初学记录</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/01/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95/" title="并查集">并查集</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/11/14/%E5%88%9D%E8%AF%86rsa/" title="初识rsa">初识rsa</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/24/%E5%88%9D%E5%AD%A6dp%E2%80%94%E2%80%9401%E8%83%8C%E5%8C%85/" title="初学dp——01背包">初学dp——01背包</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/24/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="前缀和与二分查找">前缀和与二分查找</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web/" title="In web">web</a>
+</div>
+
+    <span><a href="/2025/04/01/web%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" title="web之信息搜集">web之信息搜集</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/12/12/hello-world/" title="Hello World">Hello World</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web/" title="In web">web</a>
+</div>
+
+    <span><a href="/2025/04/01/php%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" title="php常见函数">php常见函数</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" title="归并排序">归并排序</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">GoodNut @ WFN 's Blog</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/12/22/归并排序/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

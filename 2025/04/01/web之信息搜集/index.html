@@ -1,0 +1,534 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Hexo" href="http://example.com/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Hexo" href="http://example.com/atom.xml" />
+<link rel="alternate" type="application/json" title="Hexo" href="http://example.com/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="web,ctf" />
+
+
+<link rel="canonical" href="http://example.com/2025/04/01/web%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/">
+
+
+
+  <title>
+web之信息搜集 - web |
+WFN 's Blog = Hexo</title>
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">web之信息搜集
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="Created: 2025-04-01 15:43:39">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">Posted on</span>
+    <time itemprop="dateCreated datePublished" datetime="2025-04-01T15:43:39+00:00">2025-04-01</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="Toggle navigation bar">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">WFN 's Blog</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/HW2rR4BebQfanCG.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/TeFxgGdAO2alzJy.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/KnsU1wb9RcydQxg.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/41YfPCg3AVFUsEO.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/S4b3kUYEPDTqXlR.jpg"></li>
+          <li class="item" data-background-image="https://s2.loli.net/2025/08/20/CefOMzZ5cvTqAmL.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">Home</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/web/" itemprop="item" rel="index" title="In web"><span itemprop="name">web</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="en">
+  <link itemprop="mainEntityOfPage" href="http://example.com/2025/04/01/web%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="GoodNut">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Hexo">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="按f12"><a href="#按f12" class="headerlink" title="按f12"></a>按f12</h1><p>梦开始的地方</p>
+<h1 id="ctrl-u"><a href="#ctrl-u" class="headerlink" title="ctrl+u"></a>ctrl+u</h1><p>f12被禁用可以用这个，或者通过在url头部添加 <code>view-source:</code></p>
+<h1 id="F12后查看“网络”标签"><a href="#F12后查看“网络”标签" class="headerlink" title="F12后查看“网络”标签"></a>F12后查看“网络”标签</h1><p>进入后查看响应包相关信息找到flag  cookie等</p>
+<h1 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h1><p><code>/robots.txt</code></p>
+<h1 id="index-phps"><a href="#index-phps" class="headerlink" title="index.phps"></a>index.phps</h1><p><code>/index.phps</code></p>
+<p>和index.php的区别</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th><code>index.php</code></th>
+<th><code>index.phps</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>文件用途</strong></td>
+<td>执行 PHP 脚本</td>
+<td>展示 PHP 源代码</td>
+</tr>
+<tr>
+<td><strong>服务器处理方式</strong></td>
+<td>解析并执行代码</td>
+<td>显示代码（需配置）或直接返回</td>
+</tr>
+</tbody></table>
+<h1 id="www-zip"><a href="#www-zip" class="headerlink" title="www.zip"></a><span class="exturl" data-url="aHR0cDovL3d3dy56aXAv">www.zip</span></h1><p><code>/www.zip</code></p>
+<h1 id="git-index-php"><a href="#git-index-php" class="headerlink" title="&#x2F;.git&#x2F;index.php"></a>&#x2F;.git&#x2F;index.php</h1><p><code>/.git/index.php</code></p>
+<p>.git源码泄露：采用git管理项目时，上传项目忘记删除.git文件，攻击者可通过该文件恢复源码历史版本，从而造成源码泄露</p>
+<h1 id="svn"><a href="#svn" class="headerlink" title=".svn"></a>.svn</h1><p><code>/.svn</code></p>
+<p>与git一样，SVN也是常用的代码版本管理工具 这里url+&#x2F;.svn即可</p>
+<h1 id="dns检查查询"><a href="#dns检查查询" class="headerlink" title="dns检查查询"></a>dns检查查询</h1><p>cmd运行 例如nslookup -qt&#x3D;txt flag.ctfshow.com  </p>
+<p>nslookup -query&#x3D;type(类型) 域名     &#x2F;&#x2F;一般是txt啦，txt里面好放东西</p>
+<h1 id="技术文档塞东西"><a href="#技术文档塞东西" class="headerlink" title="技术文档塞东西"></a>技术文档塞东西</h1><p>一看容器前端做的很好的那种网站啊 上下找找，估计有技术文档啥的 document 打开里面有东西</p>
+<h1 id="editor"><a href="#editor" class="headerlink" title="&#x2F;editor"></a>&#x2F;editor</h1><p>ctfshow 14题   访问url&#x2F;editor 后能看见一个编辑器，编辑器里点添加附件，就能看到所有目录都被遍历了</p>
+<p>挺神奇的</p>
+<h1 id="admin"><a href="#admin" class="headerlink" title="&#x2F;admin"></a>&#x2F;admin</h1><p>遇到好几个题都是在&#x2F;admin下有一个登录页面</p>
+<p>不要放过任何一个可疑信息 eg. ctfshow web15中就出现了一个qq邮箱，虽然不知道啥用但是很可疑，果然&#x2F;admin后，需要登录，登录不知道密码怎么办，有个找回密码，点击后密保问题是居住地是哪里</p>
+<p>qq号就派上用场了，搜一下qq号就可以看到居住地  (怎么一股misc味</p>
+<h1 id="tz-php"><a href="#tz-php" class="headerlink" title="&#x2F;tz.php"></a>&#x2F;tz.php</h1><p>php探针是用来探测空间、服务器运行状况和PHP信息用的，探针可以实时查看服务器硬盘资源、内存占用、网卡流量、系统负载、服务器时间等信息</p>
+<ul>
+<li>根据提示用到php探针知识点</li>
+<li>输入默认探针tz.php</li>
+<li>打开后点击phpinfo就可以查看到flag</li>
+</ul>
+<h1 id="url-index-php-swp"><a href="#url-index-php-swp" class="headerlink" title="url&#x2F;index.php.swp"></a>url&#x2F;index.php.swp</h1><p>vim缓存信息泄露</p>
+
+      <div class="tags">
+          <a href="/tags/web/" rel="tag"><i class="ic i-tag"></i> web</a>
+          <a href="/tags/ctf/" rel="tag"><i class="ic i-tag"></i> ctf</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">Edited on</span>
+    <time title="Modified: 2025-05-24 11:34:43" itemprop="dateModified" datetime="2025-05-24T11:34:43+00:00">2025-05-24</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> Donate</button>
+  <p>Give me a cup of [coffee]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="GoodNut WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="GoodNut Alipay">
+        <p>Alipay</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="GoodNut PayPal">
+        <p>PayPal</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>Post author:  </strong>GoodNut <i class="ic i-at"><em>@</em></i>Hexo
+  </li>
+  <li class="link">
+    <strong>Post link: </strong>
+    <a href="http://example.com/2025/04/01/web%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" title="web之信息搜集">http://example.com/2025/04/01/web之信息搜集/</a>
+  </li>
+  <li class="license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2025/04/01/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2025&#x2F;08&#x2F;20&#x2F;rcDmufyIh5B3TpF.jpg" title="php伪协议">
+  <span class="type">Previous Post</span>
+  <span class="category"><i class="ic i-flag"></i> web</span>
+  <h3>php伪协议</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2025/04/10/gcd%E4%B8%8Elcm/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;s2.loli.net&#x2F;2025&#x2F;08&#x2F;20&#x2F;kBM38RX2KZGeEws.jpg" title="gcd与lcm">
+  <span class="type">Next Post</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>gcd与lcm</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="Contents">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8C%89f12"><span class="toc-number">1.</span> <span class="toc-text">按f12</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ctrl-u"><span class="toc-number">2.</span> <span class="toc-text">ctrl+u</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#F12%E5%90%8E%E6%9F%A5%E7%9C%8B%E2%80%9C%E7%BD%91%E7%BB%9C%E2%80%9D%E6%A0%87%E7%AD%BE"><span class="toc-number">3.</span> <span class="toc-text">F12后查看“网络”标签</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#robots-txt"><span class="toc-number">4.</span> <span class="toc-text">robots.txt</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#index-phps"><span class="toc-number">5.</span> <span class="toc-text">index.phps</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#www-zip"><span class="toc-number">6.</span> <span class="toc-text">www.zip</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#git-index-php"><span class="toc-number">7.</span> <span class="toc-text">&#x2F;.git&#x2F;index.php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#svn"><span class="toc-number">8.</span> <span class="toc-text">.svn</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#dns%E6%A3%80%E6%9F%A5%E6%9F%A5%E8%AF%A2"><span class="toc-number">9.</span> <span class="toc-text">dns检查查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3%E5%A1%9E%E4%B8%9C%E8%A5%BF"><span class="toc-number">10.</span> <span class="toc-text">技术文档塞东西</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#editor"><span class="toc-number">11.</span> <span class="toc-text">&#x2F;editor</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#admin"><span class="toc-number">12.</span> <span class="toc-text">&#x2F;admin</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tz-php"><span class="toc-number">13.</span> <span class="toc-text">&#x2F;tz.php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#url-index-php-swp"><span class="toc-number">14.</span> <span class="toc-text">url&#x2F;index.php.swp</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="Related">
+        <ul>
+          <li><a href="/2025/03/28/web%EF%BC%881%EF%BC%89/" rel="bookmark" title="web（1）">web（1）</a></li><li><a href="/2025/04/01/php%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" rel="bookmark" title="php常见函数">php常见函数</a></li><li><a href="/2025/04/01/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/" rel="bookmark" title="php伪协议">php伪协议</a></li><li class="active"><a href="/2025/04/01/web%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" rel="bookmark" title="web之信息搜集">web之信息搜集</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="Overview">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="GoodNut"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">GoodNut</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">25</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">5</span>
+        <span class="name">categories</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">4</span>
+        <span class="name">tags</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>Home</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2025/04/01/php%E4%BC%AA%E5%8D%8F%E8%AE%AE/" rel="prev" title="Previous Post"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2025/04/10/gcd%E4%B8%8Elcm/" rel="next" title="Next Post"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>Random Posts</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/web/" title="In web">web</a>
+</div>
+
+    <span><a href="/2025/04/01/php%E5%B8%B8%E8%A7%81%E5%87%BD%E6%95%B0/" title="php常见函数">php常见函数</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/08/20/%E6%9B%B4%E6%96%B0%E6%B5%8B%E8%AF%95/" title="更新测试">更新测试</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/11/14/%E5%88%9D%E8%AF%86rsa/" title="初识rsa">初识rsa</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/24/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/" title="前缀和与二分查找">前缀和与二分查找</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%80%86%E5%90%91/" title="In 逆向">逆向</a>
+</div>
+
+    <span><a href="/2025/10/15/%E7%AC%AC%E4%B8%80%E9%81%93%E8%BF%B7%E5%AE%AB%E9%80%86%E5%90%91%E9%A2%98!/" title="第一道迷宫逆向题!">第一道迷宫逆向题!</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/10/26/gcl%E5%96%9C%E6%AC%A2%E6%94%BE%E9%B8%BD%E5%AD%90/" title="gcl放鸽子">gcl放鸽子</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/28/%E5%A4%9A%E6%AC%A1%E8%AF%A2%E9%97%AE%E9%A2%98%E7%9B%AE%E6%A8%A1%E7%89%88/" title="多次询问题目模版">多次询问题目模版</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/01/%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%AE%97%E6%B3%95/" title="并查集">并查集</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2025/03/31/sqlmap%E4%BD%BF%E7%94%A8/" title="sqlmap使用">sqlmap使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2024/12/22/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" title="归并排序">归并排序</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>Recent Comments</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">GoodNut @ WFN 's Blog</span>
+  </div>
+  <div class="powered-by">
+    Powered by <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2025/04/01/web之信息搜集/',
+    favicon: {
+      show: "（●´3｀●）Goooood",
+      hide: "(´Д｀)Booooom"
+    },
+    search : {
+      placeholder: "Search for Posts",
+      empty: "We didn't find any results for the search: ${query}",
+      stats: "${hits} results found in ${time} ms"
+    },
+    valine: true,fancybox: true,
+    copyright: 'Copied to clipboard successfully! <br> All articles in this blog are licensed under <i class="ic i-creative-commons"></i>BY-NC-SA.',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
