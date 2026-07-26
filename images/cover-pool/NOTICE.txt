@@ -1,0 +1,8 @@
+封面图片池 (cover-pool)
+
+这些图片用于无封面文章的自动封面（见 scripts/generated-cover.js）。
+全部来源于 Wikimedia Commons，授权均为 CC0 / 公有领域，可自由使用，无需署名。
+检索方式：Commons API 搜索 incategory:CC-Zero + 主题关键词，2026-07 下载。
+
+想增减图片：直接在本目录添加/删除 jpg/png/webp 文件即可，
+文章与图片的对应关系由标题哈希决定，改动池子后部分文章的封面会变。
